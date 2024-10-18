@@ -20,17 +20,13 @@ jobs:
 
     - name: SSH into EC2 and check if repo exists, then clone or pull
       run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@<EC2-IP> << 'EOF'
-        if [ -d "/home/ubuntu/<your-project-dir>" ]; then
+        ssh -o StrictHostKeyChecking=no ubuntu@3.87.184.172 << 'EOF'
+        if [ -d "/var/test" ]; then
           echo "Repository exists. Pulling latest changes..."
-          cd /home/ubuntu/<your-project-dir>
+          cd /var/test
           git pull origin main
         else
           echo "Repository does not exist. Cloning repository..."
-          git clone git@github.com:<your-username>/<your-repo>.git /home/ubuntu/<your-project-dir>
+          git clone git@github.com:HimanshuGupta08/test-repo.git /var/test
         fi
         EOF
-
-    - name: Run deployment commands (if needed)
-      run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@<EC2-IP> "cd /home/ubuntu/<your-project-dir> && <commands-to-deploy>"
