@@ -10,29 +10,6 @@ Jenkins Server: Ensure Jenkins is installed and configured.
 GitHub Personal Access Token: Generate a PAT with appropriate repository access permissions on GitHub and store it in Jenkins credentials under an identifier, such as github_token.
 Jenkins Git Plugin: Verify that the Git plugin is installed on Jenkins to support Git operations.
 GitHub Repository: Have the repository URL ready for cloning.
-Pipeline Script
-Here’s the Jenkins pipeline script for reference:
-
-**Pipeline Code**
-
-pipeline {
-    agent any
-        stages {
-        stage('Clone Repository') {
-            steps {
-                script {
-                    // Clean the workspace if necessary
-                    sh 'rm -rf *'  // Ensure the workspace is clean
-                    // Use withCredentials to bind the token
-                    withCredentials([string(credentialsId: 'github_token', variable: 'GITHUB_TOKEN')]) {
-                        // Clone the repository using HTTPS and the personal access token
-                        sh "git clone https://${GITHUB_TOKEN}@github.com/richest/test-repo.git"
-                    }
-                }
-            }
-        }
-    }
-}
 
 **Explanation**
 Clean Workspace: The rm -rf * command ensures any previous files in the workspace are removed before cloning, preventing conflicts or leftover data from earlier builds.
