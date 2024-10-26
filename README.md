@@ -1,4 +1,5 @@
 **Jenkins Pipeline to Clone GitHub Repository Using Personal Access Token**
+
 This Jenkins pipeline demonstrates how to clone a GitHub repository securely using a Personal Access Token (PAT). By binding the GitHub token securely through Jenkins credentials, this script ensures the token is not exposed in the logs or source code.
 
 **Purpose**
