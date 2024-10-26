@@ -17,7 +17,7 @@ Here’s the Jenkins pipeline script for reference:
 
 pipeline {
     agent any
-    stages {
+        stages {
         stage('Clone Repository') {
             steps {
                 script {
